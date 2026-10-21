@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap");
+
+/* ==========================================================
+   Catálogo de personagens
+   Visual de gibi impresso: papel lilás com retícula de pontos,
+   tinta índigo, borda grossa e sombra dura. O destaque da
+   página é o título com sombra amarela; o resto fica quieto.
+   ========================================================== */
+
+:root {
+    --papel: #f3f1ff;
+    --tinta: #17163a;
+    --destaque: #4b3bff;
+    --sinal: #ffd23f;
+    --zebra: #e8e5ff;
+    --suave: #5b5a7e;
+
+    --borda: 2px solid var(--tinta);
+    --sombra: 6px 6px 0 var(--tinta);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+
+body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+
+    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--tinta);
+
+    background-color: var(--papel);
+    background-image: radial-gradient(rgba(23, 22, 58, 0.09) 1px, transparent 1.6px);
+    background-size: 14px 14px;
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-shadow: 3px 3px 0 var(--sinal);
+}
+
+p {
+    margin: 0 0 1.25rem;
+}
+
+a {
+    color: var(--destaque);
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    background: var(--sinal);
+    color: var(--tinta);
+}
+
+:focus-visible {
+    outline: 3px solid var(--destaque);
+    outline-offset: 3px;
+}
+
+/* ---------- Botão "Cadastrar personagem" (link logo abaixo do título) ---------- */
+
+h1 + p > a {
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+
+    background: var(--destaque);
+    color: #fff;
+    text-decoration: none;
+
+    border: var(--borda);
+    box-shadow: 4px 4px 0 var(--tinta);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+h1 + p > a:hover {
+    background: var(--destaque);
+    color: #fff;
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--tinta);
+}
+
+h1 + p > a:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--tinta);
+}
+
+/* ---------- Mensagem de erro (único <p> sem link) ---------- */
+
+p:not(:has(a)) {
+    padding: 0.75rem 1rem;
+    background: var(--sinal);
+    border: var(--borda);
+    font-weight: 600;
+}
+
+/* ---------- Tabela da listagem ---------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: var(--borda);
+    background: #fff;
+    box-shadow: var(--sombra);
+}
+
+th,
+td {
+    padding: 0.8rem 1rem;
+    border: 0;
+    border-bottom: 1px solid rgba(23, 22, 58, 0.18);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: var(--tinta);
+    color: #fff;
+    font-weight: 700;
+    border-bottom: var(--borda);
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+tr:nth-child(even) td {
+    background: var(--zebra);
+}
+
+tr:hover td {
+    background: var(--sinal);
+}
+
+th:first-child,
+td:first-child {
+    width: 4.5rem;
+    color: var(--suave);
+    font-variant-numeric: tabular-nums;
+}
+
+tr:hover td:first-child {
+    color: var(--tinta);
+}
+
+/* ---------- Formulário de cadastro ---------- */
+
+form {
+    display: grid;
+    gap: 0.4rem;
+    max-width: 520px;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+
+    background: #fff;
+    border: var(--borda);
+    box-shadow: var(--sombra);
+}
+
+label {
+    margin-top: 0.6rem;
+    font-weight: 700;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+
+    font: inherit;
+    color: var(--tinta);
+    background: var(--papel);
+
+    border: var(--borda);
+    border-radius: 0;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    background: #fff;
+    border-color: var(--destaque);
+    box-shadow: 4px 4px 0 var(--sinal);
+}
+
+button {
+    justify-self: start;
+    margin-top: 1.1rem;
+    padding: 0.7rem 1.4rem;
+
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: var(--destaque);
+
+    border: var(--borda);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--tinta);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--tinta);
+}
+
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--tinta);
+}
+
+/* ---------- Telas pequenas ---------- */
+
+@media (max-width: 600px) {
+    body {
+        padding-top: 1.5rem;
+    }
+
+    /* a tabela rola na horizontal em vez de estourar a tela */
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    th,
+    td {
+        padding: 0.65rem 0.75rem;
+    }
+
+    form {
+        padding: 1.1rem;
+    }
+}
+
+/* ---------- Movimento reduzido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    button,
+    h1 + p > a {
+        transition: none;
+    }
+}
